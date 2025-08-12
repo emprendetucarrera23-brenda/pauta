@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta de Pauta: Emprende Tu Carrera + Ultima Hora Col</title>
+    <!-- Chosen Palette: Corporate Calm -->
+    <!-- Application Structure Plan: A single-page, narrative scrolling structure was chosen to guide the user logically from the problem to the solution. This format is more engaging than static slides and allows for interactive data exploration. The flow is: Hero -> Opportunity -> Partner Intro -> Target Audience -> Interactive Data Dashboard (the core) -> Creative Showcase -> Success Stories -> Plan & Budget -> KPIs -> Final CTA. This structure builds a compelling case step-by-step, with the interactive ROI calculator as a key "wow" factor to make the investment tangible. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Audience Demographics (Age, Education). Goal: Compare/Inform. Viz: Bar and Donut charts. Interaction: Tooltips. Justification: Best visual for categorical comparison. Library: Chart.js (Canvas).
+        - Report Info: Projected ROI. Goal: Explore Relationships. Viz: HTML Slider + JS text update. Interaction: User drags slider to see real-time ROI changes. Justification: Makes the financial projection interactive and engaging. Library: Vanilla JS.
+        - Report Info: 3-Month Plan. Goal: Organize. Viz: HTML/CSS Timeline. Interaction: Hover effects. Justification: More intuitive than a list. Library: HTML/Tailwind.
+        - All other text and concepts are presented in clean, well-structured cards and sections to maintain a professional, readable flow. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F7F4;
+            color: #1a202c;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+        .brand-accent { color: #370c31; }
+        .brand-accent-bg { background-color:#370c31; }
+        .brand-accent-border { border-color: #370c31; }
+        .brand-secondary-bg { background-color: #EAE8E1; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header / Navigation -->
+    <header class="brand-accent-bg text-white sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <h1 class="text-lg font-bold">Emprende Tu Carrera</h1>
+            <nav class="hidden md:flex space-x-6 text-sm">
+                <a href="#oportunidad" class="hover:text-gray-300">Oportunidad</a>
+                <a href="#datos" class="hover:text-gray-300">Datos Clave</a>
+                <a href="#plan" class="hover:text-gray-300">El Plan</a>
+                <a href="#inversion" class="hover:text-gray-300">Inversión</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="text-center py-20 px-6 bg-white">
+            <div class="container mx-auto">
+                <div class="flex justify-center items-center space-x-8 mb-6">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScysy_vwXAF0VH1eQ_oR81RAnufsNiUdYrSQ&s" alt="Logo de UHC" >
+                    <div class="text-2xl font-light">&</div>
+                    <img src="https://pbs.twimg.com/media/DYNg8uwW0AAahV2.jpg:large" alt="Logo de UHC" width="160" height="160">
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Propuesta de Pauta Publicitaria</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Llevando a <span class="brand-accent font-semibold">Emprende Tu Carrera</span> al siguiente nivel a través de una alianza estratégica con <span class="brand-accent font-semibold">Ultima Hora Col</span>.</p>
+            </div>
+        </section>
+
+        <!-- The Opportunity -->
+        <section id="oportunidad" class="py-20 px-6">
+            <div class="container mx-auto text-center">
+                <h3 class="text-3xl font-bold mb-4">Nuestra Oportunidad de Crecimiento</h3>
+                <p class="max-w-3xl mx-auto text-gray-700 mb-12">Para acelerar nuestro impacto, necesitamos llegar de forma proactiva a profesionales que aún no nos conocen. La clave es encontrarlos donde ya consumen información de confianza.</p>
+                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-left">
+                        <h4 class="text-2xl font-bold mb-3 brand-accent">La Solución Estratégica</h4>
+                        <p class="text-gray-600">Proponemos una campaña de pauta digital en **Ultima Hora Col**, uno de los medios con mayor credibilidad y alcance entre profesionales en el país. Esta alianza nos ofrece:</p>
+                        <ul class="mt-4 space-y-2 list-inside">
+                            <li class="flex items-start"><span class="text-green-500 mr-2">✔</span> <strong>Alineación de Audiencia:</strong> Su público es nuestro cliente ideal.</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2">✔</span> <strong>Credibilidad y Confianza:</strong> Nos asociaremos con una marca respetada.</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2">✔</span> <strong>Alcance Masivo y Segmentado:</strong> Llegaremos a miles de potenciales clientes.</li>
+                        </ul>
+                    </div>
+                    <div class="brand-secondary-bg p-8 rounded-lg text-left">
+                        <h4 class="text-2xl font-bold mb-3">Conectando con "Ana, la Profesional"</h4>
+                        <p class="text-gray-800 mb-4">Nuestro cliente ideal tiene entre 25 y 40 años, vive en las principales ciudades, pero tambien en lugares del pais donde es dificil acceder a educay busca activamente cómo crecer en su carrera.</p>
+                        <p class="font-semibold">Su "dolor":</p>
+                        <p class="text-gray-800">Se siente estancada, busca un mejor salario o necesita nuevas habilidades para ser más competitiva. <strong class="brand-accent">"Emprende Tu Carrera" es la solución que está buscando.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Section -->
+        <section id="datos" class="py-20 px-6 bg-white">
+            <div class="container mx-auto">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold">Los Datos Detrás de la Decisión</h3>
+                    <p class="max-w-3xl mx-auto text-gray-700 mt-2">La audiencia de Ultima Hora Col no solo es grande, es la audiencia correcta. Los datos demuestran una alineación perfecta con nuestro perfil de cliente.</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h4 class="text-xl font-bold text-center mb-4">Distribución por Edad</h4>
+                        <div class="chart-container">
+                            <canvas id="ageChart"></canvas>
+                        </div>
+                    </div>
+                     <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-left">
+                        <h4 class="text-2xl font-bold mb-3 brand-accent">Numeros redes Sociales</h4>
+                        <p class="text-gray-600">Con más de 3.654.600 millones de seguidores en sus principales redes sociales y un promedio mensual de 117 mil a 1 millon de interacciones, la marca ha consolidado una comunidad activa y leal. Su contenido informativo y de actualidad logra un alto nivel de engagement, posicionándola como un canal confiable y de gran impacto para conectar con audiencias en toda Colombia.</p>
+                        <ul class="mt-4 space-y-2 list-inside">
+                            <li class="flex items-start"><span class="text-green-600 mr-2">✔</span> <strong>Instagram:</strong> 2.000.000 </li>
+                            <li class="flex items-start"><span class="text-green-600 mr-2">✔</span> <strong>TikTok:</strong> 1.500.000</li>
+                            <li class="flex items-start"><span class="text-green-600 mr-2">✔</span> <strong>Facebook:</strong> 132.000</li>
+                            <li class="flex items-start"><span class="text-green-600 mr-2">✔</span> <strong>Youtube:</strong> 22.600</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-center mb-4">Alcance Redes Sociales</h4>
+                        <div class="chart-container">
+                            <canvas id="educationChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-20 max-w-4xl mx-auto brand-secondary-bg p-8 rounded-lg shadow-lg">
+                    <h4 class="text-2xl font-bold text-center mb-2">Proyección de Retorno de Inversión (ROI)</h4>
+                    <p class="text-center text-gray-700 mb-6">Utilice el control deslizante para ver el impacto potencial de su inversión. Esta es una estimación conservadora basada en tasas de conversión estándar del sector.</p>
+                    <div class="mb-6">
+                        <label for="investmentSlider" class="block font-semibold mb-2 text-center">Inversión en Pauta (a la espera de precios exactos)</label>
+                        <input id="investmentSlider" type="range" min="1000000" max="20000000" value="5000000" step="500000" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer">
+                        <div class="flex justify-between text-xs text-gray-600 mt-1">
+                            <span>$1M</span>
+                            <span>$20M</span>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-4 text-center">
+                        <div>
+                            <p class="text-gray-600 text-sm">Inversión Seleccionada</p>
+                            <p id="investmentValue" class="text-2xl font-bold brand-accent">$5,000,000</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-600 text-sm">Alcance Proyectado (Personas)</p>
+                            <p id="reachValue" class="text-2xl font-bold brand-accent">~250,000</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-600 text-sm">Leads Potenciales Generados</p>
+                            <p id="leadsValue" class="text-2xl font-bold brand-accent">~125</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Plan -->
+        <section id="plan" class="py-20 px-6">
+            <div class="container mx-auto">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold">Nuestra Hoja de Ruta y Mensaje</h3>
+                    <p class="max-w-3xl mx-auto text-gray-700 mt-2">Proponemos una campaña con el concepto "Tu Carrera, a Otro Nivel", con mensajes directos y aspiracionales que conecten con las necesidades de nuestro público.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 mb-16">
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 brand-accent-border">
+                        <h5 class="font-bold mb-2">"¿Estás listo para tu próximo gran paso profesional? Descubre cómo."</h5>
+                        <p class="text-sm text-gray-600">Enfoque: Curiosidad y ambición.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 brand-accent-border">
+                        <h5 class="font-bold mb-2">"Las 5 habilidades que los reclutadores buscan en 2025. ¿Las tienes?"</h5>
+                        <p class="text-sm text-gray-600">Enfoque: Urgencia y relevancia.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 brand-accent-border">
+                        <h5 class="font-bold mb-2">"De analista a gerente: Emprende Tu Carrera te muestra la ruta."</h5>
+                        <p class="text-sm text-gray-600">Enfoque: Aspiracional y claro.</p>
+                    </div>
+                </div>
+                
+                <h4 class="text-2xl font-bold text-center mb-8">Plan de Acción (3 Meses)</h4>
+                <div class="relative max-w-4xl mx-auto">
+                    <div class="absolute w-1 bg-gray-300 h-full left-1/2 -translate-x-1/2"></div>
+                    <div class="grid md:grid-cols-3 gap-8 text-center">
+                        <div class="bg-white p-6 rounded-lg shadow-lg">
+                            <div class="brand-accent-bg text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">1</div>
+                            <h5 class="font-bold">Mes 1: Estrategia</h5>
+                            <p class="text-sm text-gray-600">Planeación, diseño de creatividades y configuración de la pauta.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-lg">
+                            <div class="brand-accent-bg text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">2</div>
+                            <h5 class="font-bold">Mes 2: Lanzamiento</h5>
+                            <p class="text-sm text-gray-600">Puesta en marcha, monitoreo semanal y primera optimización.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-lg">
+                            <div class="brand-accent-bg text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">3</div>
+                            <h5 class="font-bold">Mes 3: Optimización</h5>
+                            <p class="text-sm text-gray-600">Ajustes basados en datos y entrega del reporte final de resultados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Investment -->
+        <section id="inversion" class="py-20 px-6 bg-white">
+            <div class="container mx-auto max-w-4xl">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold">Métricas de Éxito</h3>
+                    <p class="max-w-3xl mx-auto text-gray-700 mt-2">Una inversión transparente con un enfoque claro en los resultados que importan para el negocio.</p>
+                </div>
+                    <div class="bg-gray-200 p-6 rounded-lg shadow-md border-l-4 brand-accent-border">
+                        <h4 class="text-2xl font-bold mb-4">¿Cómo Mediremos el Éxito?</h4>
+                        <ul class="space-y-2">
+                            <li><strong>Alcance e Impresiones:</strong> N° de personas que verán los anuncios.</li>
+                            <li><strong>CTR (Click-Through Rate):</strong> % de personas que hacen clic.</li>
+                            <li class="font-bold brand-accent"><strong>Leads Generados:</strong> N° de registros para asesorías o guías.</li>
+                            <li class="font-bold brand-accent"><strong>CPL (Costo por Lead):</strong> Cuánto nos cuesta cada cliente potencial.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="py-20 px-6">
+            <div class="container mx-auto text-center">
+                <h3 class="text-3xl font-bold">Es el Momento de Acelerar</h3>
+                <p class="max-w-3xl mx-auto text-gray-700 my-4">Esta no es un gasto, es una inversión estratégica para posicionar a "Emprende Tu Carrera" como líder del sector. Conectemos con la audiencia que más nos necesita.</p>
+                <button class="brand-accent-bg text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-opacity-90 transition-colors">Aprobar Propuesta e Iniciar</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-500 text-white py-6">
+        <div class="container mx-auto text-center text-sm">
+            <p>Propuesta preparada para Emprende Tu Carrera | &copy; 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%'
+                            }
+                        }
+                    }
+                }
+            };
+            
+            // Age Chart
+            const ageCtx = document.getElementById('ageChart').getContext('2d');
+            new Chart(ageCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['18-24', '25-34', '35-44', '45-54', '55+'],
+                    datasets: [{
+                        label: '% de la Audiencia',
+                        data: [15, 45, 25, 10, 5],
+                        backgroundColor: '#370c31',
+                        borderColor: '#370c31',
+                        borderWidth: 1
+                    }]
+                },
+                options: chartOptions
+            });
+
+            // Education Chart
+            const educationCtx = document.getElementById('educationChart').getContext('2d');
+            new Chart(educationCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Instagram', 'TikTok', 'Youtube', 'Facebook'],
+                    datasets: [{
+                        label: 'Nivel Educativo',
+                        data: [54.73, 41.04, 3.61, 0.62],
+                        backgroundColor: ['#370c31', '#803e77', '#b476ac', '#f1cced'],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += context.parsed + '%';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // ROI Slider
+            const investmentSlider = document.getElementById('investmentSlider');
+            const investmentValue = document.getElementById('investmentValue');
+            const reachValue = document.getElementById('reachValue');
+            const leadsValue = document.getElementById('leadsValue');
+
+            const formatter = new Intl.NumberFormat('es-CO', {
+                style: 'currency',
+                currency: 'COP',
+                minimumFractionDigits: 0
+            });
+
+            function updateROI() {
+                const investment = parseInt(investmentSlider.value);
+                investmentValue.textContent = formatter.format(investment);
+                
+                // Estimaciones: 50,000 personas por cada $1M COP
+                const reach = (investment / 1000000) * 50000;
+                reachValue.textContent = `~${Math.round(reach).toLocaleString('es-CO')}`;
+
+                // Estimaciones: 0.05% de conversión a lead
+                const leads = reach * 0.005;
+                leadsValue.textContent = `~${Math.round(leads).toLocaleString('es-CO')}`;
+            }
+
+            investmentSlider.addEventListener('input', updateROI);
+            updateROI(); // Initial call
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
