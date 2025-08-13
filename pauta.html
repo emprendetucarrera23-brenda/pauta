@@ -4,14 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Propuesta de Pauta: Emprende Tu Carrera + Ultima Hora Col</title>
-    <!-- Chosen Palette: Corporate Calm -->
-    <!-- Application Structure Plan: A single-page, narrative scrolling structure was chosen to guide the user logically from the problem to the solution. This format is more engaging than static slides and allows for interactive data exploration. The flow is: Hero -> Opportunity -> Partner Intro -> Target Audience -> Interactive Data Dashboard (the core) -> Creative Showcase -> Success Stories -> Plan & Budget -> KPIs -> Final CTA. This structure builds a compelling case step-by-step, with the interactive ROI calculator as a key "wow" factor to make the investment tangible. -->
-    <!-- Visualization & Content Choices: 
-        - Report Info: Audience Demographics (Age, Education). Goal: Compare/Inform. Viz: Bar and Donut charts. Interaction: Tooltips. Justification: Best visual for categorical comparison. Library: Chart.js (Canvas).
-        - Report Info: Projected ROI. Goal: Explore Relationships. Viz: HTML Slider + JS text update. Interaction: User drags slider to see real-time ROI changes. Justification: Makes the financial projection interactive and engaging. Library: Vanilla JS.
-        - Report Info: 3-Month Plan. Goal: Organize. Viz: HTML/CSS Timeline. Interaction: Hover effects. Justification: More intuitive than a list. Library: HTML/Tailwind.
-        - All other text and concepts are presented in clean, well-structured cards and sections to maintain a professional, readable flow. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,6 +44,7 @@
             <nav class="hidden md:flex space-x-6 text-sm">
                 <a href="#oportunidad" class="hover:text-gray-300">Oportunidad</a>
                 <a href="#datos" class="hover:text-gray-300">Datos Clave</a>
+                <a href="#testimonios" class="hover:text-gray-300">Testimonios</a>
                 <a href="#plan" class="hover:text-gray-300">El Plan</a>
                 <a href="#inversion" class="hover:text-gray-300">Inversión</a>
             </nav>
@@ -77,7 +70,7 @@
         <section id="oportunidad" class="py-20 px-6">
             <div class="container mx-auto text-center">
                 <h3 class="text-3xl font-bold mb-4">Nuestra Oportunidad de Crecimiento</h3>
-                <p class="max-w-3xl mx-auto text-gray-700 mb-12">Para acelerar nuestro impacto, necesitamos llegar de forma proactiva a profesionales que aún no nos conocen. La clave es encontrarlos donde ya consumen información de confianza.</p>
+                <p class="max-w-3xl mx-auto text-gray-700 mb-12">Para acelerar nuestro impacto, necesitamos llegar de forma proactiva a bachilleres, tecnicos, tecnologos y profesionales que aún no nos conocen. La clave es encontrarlos donde ya consumen información de confianza.</p>
                 <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     <div class="bg-white p-8 rounded-lg shadow-lg text-left">
                         <h4 class="text-2xl font-bold mb-3 brand-accent">La Solución Estratégica</h4>
@@ -105,59 +98,214 @@
                     <h3 class="text-3xl font-bold">Los Datos Detrás de la Decisión</h3>
                     <p class="max-w-3xl mx-auto text-gray-700 mt-2">La audiencia de Ultima Hora Col no solo es grande, es la audiencia correcta. Los datos demuestran una alineación perfecta con nuestro perfil de cliente.</p>
                 </div>
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div>
+
+                <!-- Contenedor principal que centra los elementos en una columna -->
+                <div class="flex flex-col items-center gap-16">
+
+                    <!-- 1. Gráfica de Edad (Arriba y Centrada) -->
+                    <div class="w-full lg:w-2/3">
                         <h4 class="text-xl font-bold text-center mb-4">Distribución por Edad</h4>
                         <div class="chart-container">
                             <canvas id="ageChart"></canvas>
                         </div>
                     </div>
-                     <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                    <div class="bg-white p-8 rounded-lg shadow-lg text-left">
-                        <h4 class="text-2xl font-bold mb-3 brand-accent">Numeros redes Sociales</h4>
-                        <p class="text-gray-600">Con más de 3.654.600 millones de seguidores en sus principales redes sociales y un promedio mensual de 117 mil a 1 millon de interacciones, la marca ha consolidado una comunidad activa y leal. Su contenido informativo y de actualidad logra un alto nivel de engagement, posicionándola como un canal confiable y de gran impacto para conectar con audiencias en toda Colombia.</p>
-                        <ul class="mt-4 space-y-2 list-inside">
-                            <li class="flex items-start"><span class="text-green-600 mr-2">✔</span> <strong>Instagram:</strong> 2.000.000 </li>
-                            <li class="flex items-start"><span class="text-green-600 mr-2">✔</span> <strong>TikTok:</strong> 1.500.000</li>
-                            <li class="flex items-start"><span class="text-green-600 mr-2">✔</span> <strong>Facebook:</strong> 132.000</li>
-                            <li class="flex items-start"><span class="text-green-600 mr-2">✔</span> <strong>Youtube:</strong> 22.600</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold text-center mb-4">Alcance Redes Sociales</h4>
-                        <div class="chart-container">
-                            <canvas id="educationChart"></canvas>
+
+                    <!-- 2. Contenedor para el contenido inferior (en dos columnas) -->
+                    <div class="w-full grid lg:grid-cols-2 gap-12 items-center">
+                        
+                        <!-- Columna Izquierda: Texto de Números -->
+                        <div class="bg-white p-8 rounded-lg shadow-lg text-left h-full">
+                            <h4 class="text-2xl font-bold mb-3 brand-accent">Numeros redes Sociales</h4>
+                            <p class="text-gray-600">Con más de 3.654.600 millones de seguidores en sus principales redes sociales y un promedio mensual de 117 mil a 1 millon de interacciones, la marca ha consolidado una comunidad activa y leal.</p>
+                            
+                            <ul class="mt-4 space-y-4">
+                                <li class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-green-600 mr-2">✔</span>
+                                        <strong>Instagram:</strong>
+                                    </div>
+                                    <span class="text-gray-800 font-semibold">2.000.000</span>
+                                </li>
+                                <li class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-green-600 mr-2">✔</span>
+                                        <strong>TikTok:</strong>
+                                    </div>
+                                    <span class="text-gray-800 font-semibold">1.500.000</span>
+                                </li>
+                                <li class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-green-600 mr-2">✔</span>
+                                        <strong>Facebook:</strong>
+                                    </div>
+                                    <span class="text-gray-800 font-semibold">132.000</span>
+                                </li>
+                                <li class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-green-600 mr-2">✔</span>
+                                        <strong>Youtube:</strong>
+                                    </div>
+                                    <span class="text-gray-800 font-semibold">22.600</span>
+                                </li>
+                            </ul>
                         </div>
-                    </div>
-                </div>
-                <div class="mt-20 max-w-4xl mx-auto brand-secondary-bg p-8 rounded-lg shadow-lg">
-                    <h4 class="text-2xl font-bold text-center mb-2">Proyección de Retorno de Inversión (ROI)</h4>
-                    <p class="text-center text-gray-700 mb-6">Utilice el control deslizante para ver el impacto potencial de su inversión. Esta es una estimación conservadora basada en tasas de conversión estándar del sector.</p>
-                    <div class="mb-6">
-                        <label for="investmentSlider" class="block font-semibold mb-2 text-center">Inversión en Pauta (a la espera de precios exactos)</label>
-                        <input id="investmentSlider" type="range" min="1000000" max="20000000" value="5000000" step="500000" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer">
-                        <div class="flex justify-between text-xs text-gray-600 mt-1">
-                            <span>$1M</span>
-                            <span>$20M</span>
-                        </div>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-4 text-center">
+                        
+                        <!-- Columna Derecha: Gráfica Circular -->
                         <div>
-                            <p class="text-gray-600 text-sm">Inversión Seleccionada</p>
-                            <p id="investmentValue" class="text-2xl font-bold brand-accent">$5,000,000</p>
+                            <h4 class="text-xl font-bold text-center mb-4">Alcance Redes Sociales</h4>
+                            <div class="chart-container">
+                                <canvas id="educationChart"></canvas>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-gray-600 text-sm">Alcance Proyectado (Personas)</p>
-                            <p id="reachValue" class="text-2xl font-bold brand-accent">~250,000</p>
-                        </div>
-                        <div>
-                            <p class="text-gray-600 text-sm">Leads Potenciales Generados</p>
-                            <p id="leadsValue" class="text-2xl font-bold brand-accent">~125</p>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- testimonios redes socales-->
+        <section id="testimonios" class="py-10 px-6">
+            <!-- Contenedor externo para centrar el contenido principal -->
+            <div style="width: 100%; display: flex; justify-content: center;">
+                
+                <!-- Contenedor principal con el 80% de ancho -->
+                <div style="width: 80%; max-width: 1200px; background-color: #f4f4f4; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); box-sizing: border-box;">
+                    
+                    <h4 style="font-size: 1.5rem; font-weight: bold; text-align: center; margin-bottom: 0.5rem;">Testimonios de éxito</h4>
+                    <p style="text-align: center; color: #4a4a4a; margin-bottom: 1.5rem;">
+                        Casos reales que demuestran el impacto y la credibilidad de nuestro socio estratégico.
+                    </p>
+
+                    <!-- Contenedor de videos -->
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2%; width: 100%; margin-bottom: 1.5rem;">
+                        <video
+                            src="https://ik.imagekit.io/v3kitfabd/pautas/WhatsApp%20Video%202025-08-13%20at%209.15.57%20AM.mp4?updatedAt=1755094966898"
+                            type="video/mp4"
+                            controls
+                            preload="metadata"
+                            style="width: 100%; max-width: 49%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); min-width: 300px;">
+                        </video>
+
+                        <video
+                            src="https://ik.imagekit.io/v3kitfabd/pautas/WhatsApp%20Video%202025-08-13%20at%209.22.44%20AM.mp4?updatedAt=1755095194765"
+                            type="video/mp4"
+                            controls
+                            preload="metadata"
+                            style="width: 100%; max-width: 49%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); min-width: 300px;">
+                        </video>
+                    </div>
+
+                    <!-- Contenedor de iconos -->
+                    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 2rem;">
+                        <a href="https://www.instagram.com/emprendetucarrera/" target="_blank" style="display: inline-block;">
+                            <img src="https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000" alt="Instagram" style="width: 50px; height: 50px;">
+                        </a>
+                        <a href="https://www.tiktok.com/@ultimahoracol_?lang=es" target="_blank" style="display: inline-block;">
+                            <img src="https://img.icons8.com/?size=100&id=118640&format=png&color=000000" alt="TikTok" style="width: 50px; height: 50px;">
+                        </a>
+                        <a href="https://www.facebook.com/ultimahoracolnoticias" target="_blank" style="display: inline-block;">
+                            <img src="https://img.icons8.com/?size=100&id=yGcWL8copNNQ&format=png&color=000000" alt="Facebook" style="width: 50px; height: 50px;">
+                        </a>
+                        <a href="https://www.youtube.com/@ultimahoracol" target="_blank" style="display: inline-block;">
+                            <img src="https://img.icons8.com/?size=100&id=cs0F7pb81QnM&format=png&color=000000" alt="YouTube" style="width: 50px; height: 50px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+            <!-- respuesta de usuarios y marcas reconocidas que han pautado-->
+
+            <section id="testimonios" class="py-20 px-6 brand-secondary-bg">
+                <div class="container mx-auto">
+
+                    <!-- Título principal de la sección -->
+                    <div class="text-center mb-16">
+                        <h3 class="text-3xl font-bold">Pruebas de Nuestro Impacto</h3>
+                        <p class="max-w-3xl mx-auto mt-2 text-gray-700">
+                            No solo lo decimos, lo demostramos. Estos son ejemplos reales del alcance masivo y las interacciones que generamos para nuestros socios estratégicos.
+                        </p>
+                    </div>
+
+                    <!-- 1. Bloque de Publicaciones -->
+                    <div class="mb-20">
+                        <!-- Título centrado para Publicaciones -->
+                        <h4 class="text-2xl font-bold brand-accent text-center mb-8">Publicaciones con Alto Alcance</h4>
+                        
+                        <!-- Contenedor flex para alinear las imágenes horizontalmente -->
+                        <div class="flex justify-center items-center flex-wrap gap-6 md:gap-8">
+                            <img src="https://ik.imagekit.io/v3kitfabd/pautas/WhatsApp%20Image%202025-08-13%20at%2010.49.49%20AM%20(1).jpeg?updatedAt=1755112610857" alt="Ejemplo de rendimiento de publicación 1"
+                                class="w-full max-w-xs h-auto rounded-xl shadow-xl transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+                            
+                            <img src="https://ik.imagekit.io/v3kitfabd/pautas/WhatsApp%20Image%202025-08-13%20at%2010.49.53%20AM.jpeg?updatedAt=1755102897031" alt="Ejemplo de rendimiento de publicación 2"
+                                class="w-full max-w-xs h-auto rounded-xl shadow-xl transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+
+                            <img src="https://ik.imagekit.io/v3kitfabd/pautas/WhatsApp%20Image%202025-08-13%20at%2011.26.34%20AM.jpeg?updatedAt=1755103759478" alt="Ejemplo de rendimiento de publicación 3"
+                                class="w-full max-w-xs h-auto rounded-xl shadow-xl transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+                        </div>
+                    </div>
+
+                    <!-- 2. Bloque de Reels -->
+                    <div>
+                        <!-- Título centrado para Reels -->
+                        <h4 class="text-2xl font-bold brand-accent text-center mb-8">Reels Virales</h4>
+                        
+                        <!-- Contenedor flex para alinear las imágenes horizontalmente -->
+                        <div class="flex justify-center items-center flex-wrap gap-6 md:gap-8">
+                            <img src="https://ik.imagekit.io/v3kitfabd/pautas/WhatsApp%20Image%202025-08-13%20at%2012.32.59%20PM.jpeg?updatedAt=1755107134571" alt="Ejemplo de rendimiento de Reel 1"
+                                class="w-full max-w-xs h-auto rounded-xl shadow-xl transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+
+                            <img src="https://ik.imagekit.io/v3kitfabd/pautas/WhatsApp%20Image%202025-08-13%20at%2012.32.58%20PM.jpeg?updatedAt=1755107134691" alt="Ejemplo de rendimiento de Reel 2"
+                                class="w-full max-w-xs h-auto rounded-xl shadow-xl transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+
+                            <img src="https://ik.imagekit.io/v3kitfabd/pautas/WhatsApp%20Image%202025-08-13%20at%2012.32.57%20PM.jpeg?updatedAt=1755107134576" alt="Ejemplo de rendimiento de Reel 3"
+                                class="w-full max-w-xs h-auto rounded-xl shadow-xl transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+                    <!-- Contenedor de logos -->
+
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6">
+                    
+                    <!-- Título Mejorado -->
+                    <div class="text-center">
+                        <h3 class="text-3xl font-bold"> Marcas que pautaron </h3>
+                        <p class="max-w-2xl mx-auto mt-2 text-gray-600">
+                           empresas líderes en diversos sectores para conectar y alcanzar sus objetivos.
+                        </p>
+                    </div>
+
+                    <!-- Contenedor de Logos (con Tailwind CSS y Efectos) -->
+                    <div class="mt-12 flex flex-wrap justify-center items-center gap-x-12 sm:gap-x-16 gap-y-10">
+                        
+                  
+                        <img src="https://laestacioncentrocomercial.com/wp-content/uploads/2023/08/Pepe-Ganga-011.webp" alt="Logo de Pepe Ganga" 
+                            class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-110" />
+
+                   
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Logo_Bancolombia2.png" alt="Logo de Bancolombia" 
+                            class="h-8 w-auto object-contain transition-transform duration-300 hover:scale-110" />
+
+               
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyN9KrStf8ea_rIvFf_0vrgVN-m3H2I5OZXQ&s" alt="Logo de Hyundai" 
+                            class="h-16 w-auto object-contain transition-transform duration-300 hover:scale-110" />
+
+                 
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Compensar_logo.svg/2560px-Compensar_logo.svg.png" alt="Logo de Compensar" 
+                            class="h-10 w-auto object-contain transition-transform duration-300 hover:scale-110" />
+                                                
+                        <img src="https://mydnadigital.com/company/logos/viajes-falabella.png" alt="Logo de Viajes Falabella" 
+                            class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-110" />
+
+                    </div>
+                </div>
+            </section>
+                </div>
+            </div>
+        </section>
+
 
         <!-- The Plan -->
         <section id="plan" class="py-20 px-6">
@@ -184,7 +332,6 @@
                 
                 <h4 class="text-2xl font-bold text-center mb-8">Plan de Acción (3 Meses)</h4>
                 <div class="relative max-w-4xl mx-auto">
-                    <div class="absolute w-1 bg-gray-300 h-full left-1/2 -translate-x-1/2"></div>
                     <div class="grid md:grid-cols-3 gap-8 text-center">
                         <div class="bg-white p-6 rounded-lg shadow-lg">
                             <div class="brand-accent-bg text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">1</div>
@@ -231,17 +378,24 @@
             <div class="container mx-auto text-center">
                 <h3 class="text-3xl font-bold">Es el Momento de Acelerar</h3>
                 <p class="max-w-3xl mx-auto text-gray-700 my-4">Esta no es un gasto, es una inversión estratégica para posicionar a "Emprende Tu Carrera" como líder del sector. Conectemos con la audiencia que más nos necesita.</p>
-                <button class="brand-accent-bg text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-opacity-90 transition-colors">Aprobar Propuesta e Iniciar</button>
+                <a href="https://api.whatsapp.com/send/?phone=573015105362&text&type=phone_number&app_absent=0&utm_campaign=linkinbio&utm_medium=referral&utm_source=later-linkinbio" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="brand-accent-bg text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-opacity-90 transition-colors inline-block">
+                Solicitar mas información
+                </a>
             </div>
         </section>
     </main>
+    
 
     <!-- Footer -->
-    <footer class="bg-gray-500 text-white py-6">
-        <div class="container mx-auto text-center text-sm">
-            <p>Propuesta preparada para Emprende Tu Carrera | &copy; 2025</p>
-        </div>
-    </footer>
+    <!-- Footer -->
+        <footer class="brand-accent-bg text-white py-6">
+            <div class="container mx-auto text-center text-sm">
+                <p>Propuesta preparada para Emprende Tu Carrera | &copy; 2025</p>
+            </div>
+        </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -334,33 +488,34 @@
                 }
             });
 
-            // ROI Slider
+            // Note: The ROI Slider elements are not in the provided HTML.
+            // If you add them back, this script will work.
             const investmentSlider = document.getElementById('investmentSlider');
             const investmentValue = document.getElementById('investmentValue');
             const reachValue = document.getElementById('reachValue');
             const leadsValue = document.getElementById('leadsValue');
 
-            const formatter = new Intl.NumberFormat('es-CO', {
-                style: 'currency',
-                currency: 'COP',
-                minimumFractionDigits: 0
-            });
+            if (investmentSlider) {
+                const formatter = new Intl.NumberFormat('es-CO', {
+                    style: 'currency',
+                    currency: 'COP',
+                    minimumFractionDigits: 0
+                });
 
-            function updateROI() {
-                const investment = parseInt(investmentSlider.value);
-                investmentValue.textContent = formatter.format(investment);
-                
-                // Estimaciones: 50,000 personas por cada $1M COP
-                const reach = (investment / 1000000) * 50000;
-                reachValue.textContent = `~${Math.round(reach).toLocaleString('es-CO')}`;
+                function updateROI() {
+                    const investment = parseInt(investmentSlider.value);
+                    investmentValue.textContent = formatter.format(investment);
+                    
+                    const reach = (investment / 1000000) * 50000;
+                    reachValue.textContent = `~${Math.round(reach).toLocaleString('es-CO')}`;
 
-                // Estimaciones: 0.05% de conversión a lead
-                const leads = reach * 0.005;
-                leadsValue.textContent = `~${Math.round(leads).toLocaleString('es-CO')}`;
+                    const leads = reach * 0.005;
+                    leadsValue.textContent = `~${Math.round(leads).toLocaleString('es-CO')}`;
+                }
+
+                investmentSlider.addEventListener('input', updateROI);
+                updateROI();
             }
-
-            investmentSlider.addEventListener('input', updateROI);
-            updateROI(); // Initial call
         });
 
         // Smooth scrolling for navigation
